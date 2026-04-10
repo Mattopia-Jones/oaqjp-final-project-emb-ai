@@ -4,7 +4,7 @@ Adding this docstring for validation.
 # Import Flask, render_template, request
 from flask import Flask, render_template, request
 
-# Import the sentiment_analyzer function from the package created
+# Import the emotion_detector function from the package created
 from EmotionDetection.emotion_detection import emotion_detector
 
 # Initiate the flask app
