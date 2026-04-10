@@ -5,12 +5,12 @@ Adding this docstring for validation.
 from flask import Flask, render_template, request
 
 # Import the sentiment_analyzer function from the package created
-from SentimentAnalysis.sentiment_analysis import sentiment_analyzer
+from EmotionDetection.emotion_detection import emotion_detector
 
 # Initiate the flask app
-app = Flask("Sentiment Analyzer")
+app = Flask("Emotion Detector")
 
-@app.route("/sentimentAnalyzer")
+@app.route("/emotionDetector")
 
 def sent_analyzer():
 
@@ -18,7 +18,7 @@ def sent_analyzer():
     text_to_analyze = request.args.get('textToAnalyze')
 
     # Pass the text to the sentiment_analyzer function and store the response
-    response = sentiment_analyzer(text_to_analyze)
+    response = emotion_detector(text_to_analyze)
 
     # Extract the label and score from the response
     label = response['label']
@@ -40,4 +40,4 @@ def render_index_page():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5011)
+    app.run(host="0.0.0.0", port=5000)
