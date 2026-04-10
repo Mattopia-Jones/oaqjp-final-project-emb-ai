@@ -36,7 +36,7 @@ def emotion_detector(text_to_analyse):
             'fear': emotions.get('fear', 0),
             'joy': emotions.get('joy', 0),
             'sadness': emotions.get('sadness', 0),
-            'dominant_emotion': dominant_emotion
+            'dominant_emotion': dominant_emotion      
         }
     else:
         # Handle error response
