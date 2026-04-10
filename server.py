@@ -13,10 +13,6 @@ app = Flask("Emotion Detector")
 @app.route("/emotionDetector")
 
 def emote_detector():
-
-@app.route("/emotionDetector")
-
-def emote_detector():
     """
     Retrieve text from request and perform emotion detection
     """
