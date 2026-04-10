@@ -12,8 +12,15 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 
-def sent_analyzer():
+def emote_detector():
 
+    {'anger': anger_score,
+     'disgust': disgust_score,
+     'fear': fear_score,
+     'joy': joy_score,
+     'sadness': sadness_score,
+     'dominant_emotion': dominant_score
+    }
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
