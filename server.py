@@ -14,28 +14,32 @@ app = Flask("Emotion Detector")
 
 def emote_detector():
 
-    {'anger': anger_score,
-     'disgust': disgust_score,
-     'fear': fear_score,
-     'joy': joy_score,
-     'sadness': sadness_score,
-     'dominant_emotion': dominant_score
-    }
+@app.route("/emotionDetector")
+
+def emote_detector():
+    """
+    Retrieve text from request and perform emotion detection
+    """
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
-    # Pass the text to the sentiment_analyzer function and store the response
+    # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
 
-    # Extract the label and score from the response
-    label = response['label']
-    score = response['score']
+    # Check if the response is None or invalid
+    if response is None or response.get('dominant_emotion') is None:
+        return "Invalid text! Please try again."
+    
+    # Extract emotions from response
+    anger_score = response['anger']
+    disgust_score = response['disgust']
+    fear_score = response['fear']
+    joy_score = response['joy']
+    sadness_score = response['sadness']
+    dominant_emotion = response['dominant_emotion']
 
-    # Check if the label is None, indicating an error or invalid input
-    if label is None:
-        return "Invalid input! Try again."
-    # Return a formatted string with the sentiment label and score
-    return "Text identified as {} with a score of {}.".format(label.split('_')[1], score)
+    # Return a formatted string with all emotion scores
+    return f"Text identified with emotions: Anger: {anger_score}, Disgust: {disgust_score}, Fear: {fear_score}, Joy: {joy_score}, Sadness: {sadness_score}. Dominant emotion is {dominant_emotion}."
 
 @app.route("/")
 def render_index_page():
