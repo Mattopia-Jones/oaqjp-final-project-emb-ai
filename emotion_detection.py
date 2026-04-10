@@ -2,7 +2,7 @@
 import requests
 import json
 
-# Define a function named sentiment_analyzer that takes a string input
+# Define a function named emotion_detector that takes a string input
 def emotion_detector(text_to_analyse):
     # URL of the sentiment analysis service
     url = 'https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict'
@@ -21,6 +21,8 @@ def emotion_detector(text_to_analyse):
 
     # Send a POST request to the API
     response = requests.post(url, json=myobj, headers=header)
+
+    return response.text 
 
     # Handle response
 #    if response.status_code == 200:
