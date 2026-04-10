@@ -23,9 +23,9 @@ def emote_detector():
     response = emotion_detector(text_to_analyze)
 
     # Check if the response is None or invalid
-  #  if response is None or response.get('dominant_emotion') is None:
-  #      return "Invalid text! Please try again."
-    
+    if response is None or response.get('dominant_emotion') is None:
+        return "Invalid text! Please try again!"
+
     # Extract emotions from response
     anger_score = response['anger']
     disgust_score = response['disgust']
