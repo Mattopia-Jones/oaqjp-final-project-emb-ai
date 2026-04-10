@@ -27,8 +27,10 @@ def emotion_detector(text_to_analyse):
         emotions = response_dict.get('emotionPredictions', [{}])[0].get('emotion', {})
         
         # Find dominant emotion
-        dominant_emotion = max(emotions, key=emotions.get) if emotions else None
-        
+    if emotions:
+        dominant_emotion = max(emotions, key=emotions.get)
+    else:
+        dominant_emotion = None
         # Return structured dictionary
         return {
             'anger': emotions.get('anger', 0),
@@ -38,10 +40,3 @@ def emotion_detector(text_to_analyse):
             'sadness': emotions.get('sadness', 0),
             'dominant_emotion': dominant_emotion      
         }
-    else:
-        # Handle error response
-        return {
-            'error': 'API request failed',
-            'status_code': response.status_code
-        }
-        
